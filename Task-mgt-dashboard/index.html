@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task Management Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0a0a0a; color: #fafafa; }
+    .task-card { background-color: #111111; border: 1px solid #27272a; transition: all 0.3s ease; }
+    .completed { opacity: 0.7; text-decoration: line-through; background-color: #064e3b; }
+    .overdue { border-left: 4px solid #ef4444; }
+    
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <nav class="sticky top-0 z-50 bg-[#07070a]/80 backdrop-blur-sm border-b border-[#1f2937]">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      
+        <div>
+          <div class="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Task Management Dashboard</div>
+          <div class="text-sm text-gray-400 -mt-0.5 hidden sm:block">Organize your tasks efficiently and boost your productivity</div>
+        </div>
+      
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#home" class="text-sm text-gray-300 hover:text-white">Home</a>
+        <a href="#tasksList" class="text-sm text-gray-300 hover:text-white">Tasks</a>
+        <a href="#help" class="text-sm text-gray-300 hover:text-white">Help</a>
+        <a href="#statistics" class="text-sm text-gray-300 hover:text-white hidden lg:inline">Statistics</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-4 text-xs">
+          <div class="text-center">
+            <div id="totalTasks" class="font-semibold text-white">0</div>
+            <div class="text-gray-400">Total</div>
+          </div>
+          <div class="text-center">
+            <div id="completedTasks" class="font-semibold text-green-400">0</div>
+            <div class="text-gray-400">Done</div>
+          </div>
+        </div>
+
+        <button id="mobileMenuBtn" class="md:hidden flex items-center p-2 rounded hover:bg-gray-700 focus:outline-none">
+          <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-[#111827] bg-[#07070a]">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="#home" class="px-2 py-2 rounded hover:bg-[#0f1720] text-gray-300">Home</a>
+        <a href="#tasksList" class="px-2 py-2 rounded hover:bg-[#0f1720] text-gray-300">Tasks</a>
+        <a href="#help" class="px-2 py-2 rounded hover:bg-[#0f1720] text-gray-300">Help</a>
+        <a href="#statistics" class="px-2 py-2 rounded hover:bg-[#0f1720] text-gray-300">Statistics</a>
+      </div>
+    </nav>
+</body>
