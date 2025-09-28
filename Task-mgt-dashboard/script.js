@@ -21,6 +21,7 @@ function renderTasks(filter = "all") {
   // Filtering tasks (all / completed / pending)
   let filteredTasks = tasks;
   if (filter === "completed") {
+    filteredTasks = tasks.filter(t => t.completed);
   } else if (filter === "pending") {
     filteredTasks = tasks.filter(t => !t.completed);
   }
