@@ -56,3 +56,28 @@ function renderTasks(filter = "all") {
     tasksList.appendChild(taskDiv);
   });
 }
+// ====== Add Task ======
+function addTask() {
+  const taskInput = document.getElementById("taskInput");
+  const dueDateInput = document.getElementById("dueDateInput");
+
+  // Validation (cannot be empty)
+  if (taskInput.value.trim() === "") {
+    alert("Task name cannot be empty!");
+    return;
+  }
+
+  // Add new task to array
+  tasks.push({
+    name: taskInput.value,
+    dueDate: dueDateInput.value,
+    completed: false
+  });
+
+  // Reset inputs
+  taskInput.value = "";
+  dueDateInput.value = "";
+
+  saveTasks(); // Save to LocalStorage
+  renderTasks(); // Show updated list
+}
