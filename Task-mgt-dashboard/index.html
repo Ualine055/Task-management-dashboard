@@ -99,4 +99,17 @@
     </div>
   </div>
 
+  <footer class="mt-8">
+    <p class="text-center text-gray-400">&copy; 2025 Task Management Dashboard | Done by Aline</p>
+  </footer>
+
+  <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    }
+  </script>
+
+  <script src="script.js"></script>
 </body>
