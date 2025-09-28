@@ -81,3 +81,18 @@ function addTask() {
   saveTasks(); // Save to LocalStorage
   renderTasks(); // Show updated list
 }
+
+function toggleTask(index) {
+  tasks[index].completed = !tasks[index].completed;
+  saveTasks();
+  renderTasks();
+}
+
+
+function deleteTask(index) {
+  if (confirm("Are you sure you want to delete this task?")) {
+    tasks.splice(index, 1); // Remove from array
+    saveTasks();
+    renderTasks();
+  }
+}
