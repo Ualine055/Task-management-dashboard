@@ -132,3 +132,17 @@ function closeModal() {
   document.getElementById("editModal").classList.remove("flex");
 }
 
+function filterTasks(type) {
+  renderTasks(type);
+}
+
+function sortTasks(type) {
+  if (type === "date") {
+    tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+  } else if (type === "name") {
+    tasks.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  saveTasks();
+  renderTasks();
+}
+
