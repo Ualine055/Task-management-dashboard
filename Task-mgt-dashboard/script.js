@@ -146,3 +146,12 @@ function sortTasks(type) {
   renderTasks();
 }
 
+function isOverdue(date) {
+  if (!date) return false;
+  const today = new Date().toISOString().split("T")[0];
+  return date < today;
+}
+
+renderTasks();
+
+
