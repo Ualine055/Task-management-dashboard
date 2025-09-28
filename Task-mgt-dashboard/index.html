@@ -70,4 +70,20 @@
     </div>
   </div>
 
+    <div class="task-card rounded-lg p-6 mb-8 max-w-4xl mt-0 mx-auto">
+      <div class="flex flex-col md:flex-row gap-4 items-center">
+        <div class="flex gap-2">
+          <button onclick="filterTasks('all')" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg text-sm ">All</button>
+          <button onclick="filterTasks('pending')" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg text-sm ">Pending</button>
+          <button onclick="filterTasks('completed')" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg text-sm ">Completed</button>
+        </div>
+        <div class="flex gap-2 md:ml-auto">
+          <button onclick="sortTasks('date')" class="px-4 py-2 bg-purple-600 hover:bg-purple-800 rounded-lg text-sm ">Sort by Date</button>
+          <button onclick="sortTasks('name')" class="px-4 py-2 bg-purple-600 hover:bg-purple-800 rounded-lg text-sm ">Sort by Name</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tasksList" class="space-y-4"></div>
+  </div>
 </body>
