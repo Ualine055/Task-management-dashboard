@@ -96,3 +96,39 @@ function deleteTask(index) {
     renderTasks();
   }
 }
+
+// ====== Edit Task ======
+function openEditModal(index) {
+  editIndex = index;
+  document.getElementById("editTaskInput").value = tasks[index].name;
+  document.getElementById("editDueDateInput").value = tasks[index].dueDate;
+  document.getElementById("editModal").classList.remove("hidden");
+  document.getElementById("editModal").classList.add("flex");
+}
+
+function saveEdit() {
+  const newName = document.getElementById("editTaskInput").value.trim();
+  const newDate = document.getElementById("editDueDateInput").value;
+
+  if (newName === "") {
+    alert("Task name cannot be empty!");
+    return;
+  }
+
+  tasks[editIndex].name = newName;
+  tasks[editIndex].dueDate = newDate;
+
+  closeModal();
+  saveTasks();
+  renderTasks();
+}
+
+function cancelEdit() {
+  closeModal();
+}
+
+function closeModal() {
+  document.getElementById("editModal").classList.add("hidden");
+  document.getElementById("editModal").classList.remove("flex");
+}
+
