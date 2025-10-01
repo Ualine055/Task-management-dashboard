@@ -6,14 +6,14 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [
   { name: "Read a book", dueDate: "2025-10-02", completed: false }
 ];
 
-let editIndex = null; // Used to remember which task is being edited
+let editIndex = null;  
 
-// ====== Save to LocalStorage ======
+
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// ====== Render Tasks ======
+
 function renderTasks(filter = "all") {
   const tasksList = document.getElementById("tasksList");
   tasksList.innerHTML = ""; // Clear the list before showing again
@@ -56,7 +56,7 @@ function renderTasks(filter = "all") {
     tasksList.appendChild(taskDiv);
   });
 }
-// ====== Add Task ======
+
 function addTask() {
   const taskInput = document.getElementById("taskInput");
   const dueDateInput = document.getElementById("dueDateInput");
@@ -80,12 +80,16 @@ function addTask() {
 
   saveTasks(); // Save to LocalStorage
   renderTasks(); // Show updated list
+  updateStats();
 }
+
+
 
 function toggleTask(index) {
   tasks[index].completed = !tasks[index].completed;
   saveTasks();
   renderTasks();
+  updateStats();
 }
 
 
@@ -94,10 +98,11 @@ function deleteTask(index) {
     tasks.splice(index, 1); // Remove from array
     saveTasks();
     renderTasks();
+    updateStats();
   }
 }
 
-// ====== Edit Task ======
+
 function openEditModal(index) {
   editIndex = index;
   document.getElementById("editTaskInput").value = tasks[index].name;
@@ -121,6 +126,7 @@ function saveEdit() {
   closeModal();
   saveTasks();
   renderTasks();
+  updateStats();
 }
 
 function cancelEdit() {
@@ -153,5 +159,24 @@ function isOverdue(date) {
 }
 
 renderTasks();
+updateStats();
+
+function updateStats() {
+  const totalEl = document.getElementById("totalTasks");
+  const completedEl = document.getElementById("completedTasks");
+
+  const total = tasks.length;
+  const completed = tasks.filter(task => task.completed).length;
+
+  totalEl.textContent = total;
+  completedEl.textContent = completed;
+
+
+  [totalEl, completedEl].forEach(el => {
+    el.classList.add("transition", "duration-300", "scale-110");
+    setTimeout(() => el.classList.remove("scale-110"), 300);
+  });
+}
+
 
 
